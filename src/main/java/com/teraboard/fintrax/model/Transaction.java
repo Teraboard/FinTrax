@@ -1,16 +1,20 @@
 package com.teraboard.fintrax.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-
 @Entity
-@Table
+@Table(name = "transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id; // primary key
 
     private String description;
@@ -62,5 +66,4 @@ public class Transaction {
     public void setUser(User user) {
         this.user = user;
     }
-
 }

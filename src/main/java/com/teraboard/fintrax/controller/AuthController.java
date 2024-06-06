@@ -3,6 +3,7 @@ package com.teraboard.fintrax.controller;
 import com.teraboard.fintrax.model.User;
 import com.teraboard.fintrax.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private com.teraboard.fintrax.service.UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {

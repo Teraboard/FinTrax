@@ -1,6 +1,7 @@
 package com.teraboard.fintrax.controller;
 
 import com.teraboard.fintrax.model.Transaction;
+import com.teraboard.fintrax.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,12 +11,12 @@ import java.util.List;
 @RequestMapping("/transactions")
 public class TransactionController {
 
-    @Autowired
-    private TranactionService transactionService;
+    @Autowired // weird autowire false positive
+    private TransactionService transactionService;
 
     @PostMapping
     public Transaction addTransaction(@RequestBody Transaction transaction) {
-        return transactionService.addTransaction(transaction);
+        return transactionService.saveTransaction(transaction);
     }
 
     @GetMapping
